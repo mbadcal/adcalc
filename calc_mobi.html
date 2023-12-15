@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AD CAL</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    #calculator {
+      background-color: #cecae8;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 550px; /* Adjust the width as needed */
+    }
+
+    #mainDisplay, #display2, #display3, #display4, #display5 {
+      font-size: 16px;
+      padding: 15px;
+      text-align: right;
+      border-bottom: 1px solid #ccc;
+    }
+
+    #mainDisplay {
+      font-size: 30px;
+      padding: 15px;
+      text-align: right;
+      border-bottom: 1px solid #ccc;
+
+    }
+
+
+    #mainDisplay {
+      background-color:  #372f6a;
+      color: #fff;
+      height: 40px;
+      margin-bottom: 5px;
+      border-radius: 10px;
+    }
+    
+    #display2 {
+      background-color: #493e8e;
+      color: #fff;
+      height: 35px;
+      margin-bottom: 5px;
+      border-radius: 10px;
+    }
+
+    #display3, #display4, #display5 {
+      background-color: #c6c6ec;
+      height: 18px;
+      display: none; /* Initially hide */
+      display: flex;
+      margin-bottom: 5px;
+      align-items: center;
+      justify-content: flex-end;
+      border-radius: 10px;
+    }
+
+    #calculatorGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .button {
+      font-size: 20px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      background-color: #95c8ff;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      outline: none;
+    }
+
+      .big-button {
+      grid-column: span 2;
+      font-size: 20px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #95c8ff;
+      border-radius: 5px;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #fff;
+    }
+    .big-button:hover {
+      background-color: #fff;
+    }
+
+    #toggleButtons, #toggleButtonsRow2 {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
+  margin: 10px;
+}
+
+.toggleButton {
+  flex: 1; /* Distribute space equally among toggle buttons */
+  font-size: 18px;
+  padding: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: #0078d7;
+  color: #fff;
+  border-radius: 5px;
+  margin: 0px;
+  margin-right: 4px; 
+}
+
+.toggleButton:hover {
+  background-color: #333399;
+
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <div id="mainDisplay"></div>
+    <div id="display2"></div>
+    <div id="display3"></div>
+    <div id="display4"></div>
+    <div id="display5"></div>
+    <div id="calculatorGrid">
+      <div class="button" onclick="appendToDisplay('7')">7</div>
+      <div class="button" onclick="appendToDisplay('8')">8</div>
+      <div class="button" onclick="appendToDisplay('9')">9</div>
+      <div class="button" onclick="appendToDisplay('/')">/</div>
+      <div class="button" onclick="appendToDisplay('4')">4</div>
+      <div class="button" onclick="appendToDisplay('5')">5</div>
+      <div class="button" onclick="appendToDisplay('6')">6</div>
+      <div class="button" onclick="appendToDisplay('*')">*</div>
+      <div class="button" onclick="appendToDisplay('1')">1</div>
+      <div class="button" onclick="appendToDisplay('2')">2</div>
+      <div class="button" onclick="appendToDisplay('3')">3</div>
+      <div class="button" onclick="appendToDisplay('-')">-</div>
+      <div class="button" onclick="appendToDisplay('0')">0</div>
+      <div class="button" onclick="appendToDisplay('.')">.</div>
+      <div class="button" onclick="calculateResult()">=</div>
+      <div class="button" onclick="appendToDisplay('+')">+</div>
+      <div class="big-button" onclick="clearDisplay()">C</div>
+      <div class="big-button" onclick="deleteLastCharacter()">DEL</div>
+    </div>
+    <div id="toggleButtons">
+      <button class="toggleButton" onclick="toggleDisplay(2)">Full Amount  +  GST 5%</button>
+      <button class="toggleButton" onclick="toggleDisplay(3)">Direct (Dicount-10%) + GST </button>
+    </div>
+    <div id="toggleButtonsRow2">
+      <button class="toggleButton" onclick="toggleDisplay(4)">Direct (Dicount-15%) + GST</button>
+      <button class="toggleButton" onclick="toggleDisplay(5)"> Agents / PTC (Inc. GST )</button>
+    </div>
+  </div>
+
+  <script>
+    let mainDisplayValue = '';
+
+    function appendToDisplay(value) {
+      mainDisplayValue += value;
+      updateDisplay();
+    }
+
+    function clearDisplay() {
+      mainDisplayValue = '';
+      updateDisplay();
+      clearResults();
+    }
+
+    function deleteLastCharacter() {
+      mainDisplayValue = mainDisplayValue.slice(0, -1);
+      updateDisplay();
+    }
+
+    function calculateResult() {
+      try {
+        const result = eval(mainDisplayValue);
+        const x = parseFloat(result);
+        const display2Value = (x + (0.05 * x)).toFixed(2);
+        const display3Value = ((x + (0.05 * x)) - (0.1 * (x + (0.05 * x)))).toFixed(2);
+        const display4Value = ((x + (0.05 * x)) - (0.15 * (x + (0.05 * x)))).toFixed(2);
+        const display5Value = (((x - (0.15 * x)) + (0.05 * x))).toFixed(2);
+
+        document.getElementById('mainDisplay').textContent = result;
+        document.getElementById('display2').textContent = `Full Amount +GST (${(0.05 * x).toFixed(2)}) = ₹ ${display2Value}`;
+        document.getElementById('display3').textContent = `Direct (Dicount-10%) +GST = ₹ ${display3Value}`;
+        document.getElementById('display4').textContent = `Direct (Dicount-15%) +GST = ₹ ${display4Value}`;
+        document.getElementById('display5').textContent = ` Agents / PTC = ₹ ${display5Value}`;
+
+        // Initially hide displays 3, 4, and 5
+        document.getElementById('display3').style.display = 'none';
+        document.getElementById('display4').style.display = 'none';
+        document.getElementById('display5').style.display = 'none';
+
+      } catch (error) {
+        mainDisplayValue = 'Error';
+        updateDisplay();
+      }
+    }
+
+    function updateDisplay() {
+      document.getElementById('mainDisplay').textContent = mainDisplayValue;
+    }
+
+    function clearResults() {
+      document.getElementById('display2').textContent = '';
+      document.getElementById('display3').textContent = '';
+      document.getElementById('display4').textContent = '';
+      document.getElementById('display5').textContent = '';
+    }
+
+    // Function to toggle display visibility
+    function toggleDisplay(displayNumber) {
+      const displayElement = document.getElementById(`display${displayNumber}`);
+      if (displayElement) {
+        displayElement.style.display = displayElement.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+
+    document.addEventListener('keydown', function(event) {
+      const key = event.key;
+
+      if (!isNaN(key) || key === '.' || key === '+' || key === '-' || key === '*' || key === '/') {
+        appendToDisplay(key);
+      } else if (key === 'Enter') {
+        calculateResult();
+      } else if (key === 'Delete') {
+        clearDisplay();
+      } else if (key === 'Backspace') {
+        deleteLastCharacter();
+      }
+    });
+  </script>
+</body>
+</html>
