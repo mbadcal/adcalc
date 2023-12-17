@@ -227,9 +227,9 @@
         const display5Value = (((x - (0.15 * x)) + (0.05 * x))).toFixed(2);
 
         document.getElementById('mainDisplay').textContent = result;
-        document.getElementById('display2').textContent = `Full Amount +GST (${(0.05 * x).toFixed(2)}) = ₹ ${display2Value}`;
-        document.getElementById('display3').textContent = `Direct (Dicount-10%) +GST = ₹ ${display3Value}`;
-        document.getElementById('display4').textContent = `Direct (Dicount-15%) +GST = ₹ ${display4Value}`;
+        document.getElementById('display2').textContent = `Full Amount+GST (${(0.05 * x).toFixed(2)}) = ₹ ${display2Value}`;
+        document.getElementById('display3').textContent = `Direct (10% Dis.)+GST = ₹ ${display3Value}`;
+        document.getElementById('display4').textContent = `Direct (15% Dis.)+GST = ₹ ${display4Value}`;
         document.getElementById('display5').textContent = ` Agents / PTC = ₹ ${display5Value}`;
 
         // Initially hide displays 3, 4, and 5
