@@ -106,7 +106,7 @@
       border: none;
       color: #fff;
       background-color: #3d3d5c;
-      border-radius: 5px;
+      border-radius: 15px;
       transition: background-color 0.3s ease;
       outline: none;
     }
@@ -120,7 +120,7 @@
       color: #fff;
       border: 1px solid #ccc;
       background-color: #3d3d5c;
-      border-radius: 5px;
+      border-radius: 15px;
       transition: background-color 0.3s ease;
     }
 
@@ -149,7 +149,7 @@
   border: 1px solid #ccc;
   background-color: #3d3d5c;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 0px;
   margin-right: 4px; 
 }
@@ -186,7 +186,8 @@
       <div class="button" onclick="calculateResult()">=</div>
       <div class="button" onclick="appendToDisplay('+')">+</div>
       <div class="big-button" onclick="clearDisplay()">NEW</div>
-      <div class="big-button" onclick="deleteLastCharacter()">DEL</div>
+      <div class="button" onclick="deleteLastCharacter()">DEL</div>
+      <div class="button" onclick="appendToDisplay('%')">%</div>
     </div>
     <div id="toggleButtons">
       <button class="toggleButton" onclick="toggleDisplay(2)">Full Amount  +  GST 5%</button>
@@ -205,7 +206,16 @@
       mainDisplayValue += value;
       updateDisplay();
     }
-
+ function appendToDisplay(value) {
+  if (value === '%') {
+    // If the value is '%', calculate the percentage based on the current main display value
+    mainDisplayValue = (parseFloat(mainDisplayValue) / 100).toString();
+  } else {
+    // If it's not '%', proceed as usual
+    mainDisplayValue += value;
+  }
+  updateDisplay();
+}
     function clearDisplay() {
       mainDisplayValue = '';
       updateDisplay();
