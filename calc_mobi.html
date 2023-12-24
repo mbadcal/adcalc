@@ -132,7 +132,9 @@
     .big-button:hover {
       background-color: #b3b3cc;
       color: #000000;
-
+}
+        a:link {
+         text-decoration: none;
     }
 
     #toggleButtons, #toggleButtonsRow2 {
@@ -149,7 +151,7 @@
   border: 1px solid #ccc;
   background-color: #3d3d5c;
   color: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   margin: 0px;
   margin-right: 4px; 
 }
@@ -185,9 +187,9 @@
       <div class="button" onclick="appendToDisplay('.')">.</div>
       <div class="button" onclick="calculateResult()">=</div>
       <div class="button" onclick="appendToDisplay('+')">+</div>
-      <div class="big-button" onclick="clearDisplay()">NEW</div>
+      <div class="button" onclick="clearDisplay()">NEW</div>
       <div class="button" onclick="deleteLastCharacter()">DEL</div>
-      <div class="button" onclick="appendToDisplay('%')">%</div>
+     <a href="https://mbadcal.github.io/adcalc/Sepcial_Cal.html" target="_blank" class="big-button" onclick="appendToDisplay('With Extra')">With Extra</a>
     </div>
     <div id="toggleButtons">
       <button class="toggleButton" onclick="toggleDisplay(2)">Full Amount  +  GST 5%</button>
@@ -206,16 +208,7 @@
       mainDisplayValue += value;
       updateDisplay();
     }
- function appendToDisplay(value) {
-  if (value === '%') {
-    // If the value is '%', calculate the percentage based on the current main display value
-    mainDisplayValue = (parseFloat(mainDisplayValue) / 100).toString();
-  } else {
-    // If it's not '%', proceed as usual
-    mainDisplayValue += value;
-  }
-  updateDisplay();
-}
+ 
     function clearDisplay() {
       mainDisplayValue = '';
       updateDisplay();
