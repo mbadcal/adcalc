@@ -12,7 +12,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 80vh;
+      height: 100vh;
     }
     .calculator {
       max-width: 400px;
@@ -20,12 +20,12 @@
       padding: 20px;
       background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
       height: 600px
     }
     h2 {
       text-align: center;
-      color: #333;
+      color: #333
     }
     label {
       display: block;
@@ -46,7 +46,6 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      margin-top: 25px;
     }
     button:hover {
       background-color: #45a049;
@@ -54,8 +53,20 @@
     #result {
       text-align: center;
       margin-top: 20px;
-      font-size: 25px;
+      font-size: 21px;
       color: #333;
+    }
+    #result-details {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .copyright {
+      text-align: center;
+      font-size:12px;
+      color: #888;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -90,6 +101,8 @@
   </form>
 
   <p id="result">Waiting for calculation...</p>
+  <p id="result-details"></p>
+  <div class="copyright">&copy;sdevan9695
 </div>
 
 <script>
@@ -100,11 +113,20 @@
     var a = parseFloat(document.getElementById('a').value);
     var b = parseFloat(document.getElementById('b').value);
 
-    // Perform the calculation
-    var result = (x + (y / 100) * x) * (a * b);
+    // Perform the first calculation
+    var result1 = (x + (y / 100) * x) * (a * b);
+
+    // Calculate 5% of result1
+    var percentOfResult1 = 0.05 * result1;
+
+    // Perform the second calculation (result2)
+    var result2 = result1 + percentOfResult1;
 
     // Display the result
-    document.getElementById('result').textContent = 'Total : ₹  ' + result.toFixed(2);
+    document.getElementById('result').innerHTML = 'Total Inc. 5% GST:  ₹ ' + result2.toFixed(2);
+
+    // Display the details
+    document.getElementById('result-details').innerHTML = '<span>Total w/o GST: ₹ ' + result1.toFixed(2) + '</span><br><span>GST: ₹ ' + percentOfResult1.toFixed(2) + '</span>';
   }
 </script>
 
