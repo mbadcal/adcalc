@@ -13,88 +13,90 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #3b3b3b;
     }
 
-    #calculator {
-      background: linear-gradient(to top, #a3a375, #ebebe0);
-      border: 1px solid #ccc;
+      #calculator {
+      position: relative;
+      background: linear-gradient(to top, #404040, #d9d9d9);
+      border: 1px solid #333;
       border-radius: 20px;
       text-align: center;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 15px #29293d;
       overflow: hidden;
-      width: 550px; /* Adjust the width as needed */
+      width: 400px; /* Adjust the width as needed */
+      padding: 10px; /* Add padding to create a gap around the display area */
+      margin: auto; /* Center the calculator */
     }
 
-    #mainDisplay, #display2, #display3, #display4, #display5 {
-      font-size: 20px;
-      padding: 15px;
+    #creditLine {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #888;
+    }
+
+
+    #mainDisplay,
+    #display2,
+    #display3,
+    #display4,
+    #display5 {
+      font-size: 16px;
+      padding: 10px; /* Add padding around the display area */
       text-align: right;
       border-bottom: 1px solid #ccc;
     }
 
     #mainDisplay {
-      font-size: 35px;
-      padding: 15px;
+      font-size: 25px;
+      padding: 15px; /* Adjust the padding for the main display */
       text-align: right;
       border-bottom: 1px solid #ccc;
-
-    }
-
-
-    #mainDisplay {
-      background-color:  #1f1f14;
+      background-color: #29293d;
       color: #fff;
-      height: 45px;
+      height: 30px;
       margin-bottom: 5px;
       border-radius: 10px;
     }
-    
+
     #display2 {
-      background-color: #3d3d29;
+      background-color: #33334d;
       color: #fff;
-      height: 35px;
+      height: 18px;
       margin-bottom: 5px;
       border-radius: 10px;
     }
 
-    #display3 {
-      background-color: #4d4d33;
+    #display3,
+    #display4,
+    #display5 {
+      background-color: #33334d;
       color: #fff;
-      height: 20px;
-      display: none; /* Initially hide */
+      height: 15px; /* Adjust the height of additional displays */
+      display: none;
       display: flex;
       margin-bottom: 5px;
       align-items: center;
       justify-content: flex-end;
       border-radius: 10px;
     }
-   #display4{
-      background-color: #6b6b47;
-      color: #fff;
-      height: 20px;
-      display: none; /* Initially hide */
-      display: flex;
-      margin-bottom: 5px;
-      align-items: center;
-      justify-content: flex-end;
-      border-radius: 10px;
+
+    #display4 {
+      background-color: #33334d;
     }
-  #display5{
-      background-color:  #8a8a5c;
-      color: #fff;
-      height: 20px;
-      display: none; /* Initially hide */
-      display: flex;
-      margin-bottom: 20px;
-      align-items: center;
-      justify-content: flex-end;
-      border-radius: 10px;
+
+    #display5 {
+      background-color: #33334d;
     }
-    #calculatorGrid {
+
+#calculatorGrid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+      padding: 1px;
       text-align: center;
     }
 
@@ -105,60 +107,69 @@
       cursor: pointer;
       border: none;
       color: #fff;
-      background-color: #3d3d29;
-      border-radius: 10px;
+      background-color: #3d3d5c;
+      border-radius: 15px;
       transition: background-color 0.3s ease;
       outline: none;
+}
+    .button:hover {
+      background-color: #b3b3cc;
+      color: #000000;
+   
     }
 
-      .big-button {
+    .big-button {
       grid-column: span 2;
       font-size: 22px;
       padding: 15px;
       text-align: center;
       cursor: pointer;
       color: #fff;
-      border: 1px solid #ccc;
-      background-color: #3d3d29;
-      border-radius: 10px;
+      border: none;
+      background-color: #3d3d5c;
+      border-radius: 15px;
       transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #999966;
-      color: #000000;
-
+   
     }
     .big-button:hover {
-      background-color: #999966;
+      background-color: #b3b3cc;
       color: #000000;
+   
+    }
+
+        a:link {
+         text-decoration: none;
+    }
+
+    #toggleButtons,
+    #toggleButtonsRow2 {
+      display: flex;
+      justify-content: space-between;
+      /* Adjust as needed */
+      margin: 1px;
 
     }
 
-    #toggleButtons, #toggleButtonsRow2 {
-  display: flex;
-  justify-content: space-between; /* Adjust as needed */
-  margin: 10px;
-}
-
-.toggleButton {
-  flex: 1; /* Distribute space equally among toggle buttons */
-  font-size: 20px;
-  padding: 18px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background-color: #3d3d29;
-  color: #3d3d29;
-  border-radius: 10px;
-  margin: 0px;
-  margin-right: 4px; 
-}
-
-.toggleButton:hover {
-  background-color: #2e2e1f;
-  color:  #8a8a5c;
-
+    .toggleButton {
+      flex: 1;
+      font-size: 17px;
+      padding: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #3d3d5c;
+      color: #3d3d5c;
+      border-radius: 10px;
+      margin: 0px;
+      border-radius: 15px;
+      margin-right: 4px;
+      margin-top: 7px;
     }
+
+    .toggleButton:hover {
+      background-color: #b3b3cc;
+      color: #000000;
+    }
+
   </style>
 </head>
 <body>
@@ -185,17 +196,22 @@
       <div class="button" onclick="appendToDisplay('.')">.</div>
       <div class="button" onclick="calculateResult()">=</div>
       <div class="button" onclick="appendToDisplay('+')">+</div>
-      <div class="big-button" onclick="clearDisplay()">NEW</div>
-      <div class="big-button" onclick="deleteLastCharacter()">DEL</div>
+      <div class="button" onclick="clearDisplay()">NEW</div>
+      <div class="button" onclick="deleteLastCharacter()">DEL</div>
+     <a href="https://mbadcal.github.io/adcalc/Sepcial_Cal.html" target="_blank" class="big-button" onclick="appendToDisplay('With Extra')">With Extra</a>
     </div>
     <div id="toggleButtons">
-      <button class="toggleButton" onclick="toggleDisplay(2)">Full Amount  +  GST 5%</button>
-      <button class="toggleButton" onclick="toggleDisplay(3)">Direct (Dis.10%) + GST </button>
+      <button class="toggleButton" onclick="toggleDisplay(2)">Total +  GST 5%</button>
+      <button class="toggleButton" onclick="toggleDisplay(3)">Direct 10% + GST </button>
     </div>
     <div id="toggleButtonsRow2">
-      <button class="toggleButton" onclick="toggleDisplay(4)">Direct (Dis.15%) + GST</button>
+      <button class="toggleButton" onclick="toggleDisplay(4)">Direct 15% + GST</button>
       <button class="toggleButton" onclick="toggleDisplay(5)"> Agents / PTC </button>
     </div>
+  </div>
+<div id="creditLine">&copy;sdevanklm@gmail.com
+
+    
   </div>
 
   <script>
@@ -262,10 +278,10 @@
       }
     }
 
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
       const key = event.key;
 
-      if (!isNaN(key) || key === '.' || key === '+' || key === '-' || key === '*' || key === '/') {
+      if (!isNaN(key) || key === '.' || key === '+' || key === '-' || key === '*' || key === '/' | key === '%') {
         appendToDisplay(key);
       } else if (key === 'Enter') {
         calculateResult();
