@@ -39,6 +39,11 @@
     }
 
 
+    #centeredText {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 2px;
+    }
     #mainDisplay,
     #display2,
     #display3,
@@ -60,6 +65,7 @@
       height: 30px;
       margin-bottom: 5px;
       border-radius: 10px;
+      margin-top: 10px;
     }
 
     #display2 {
@@ -90,6 +96,7 @@
 
     #display5 {
       background-color: #33334d;
+      margin-bottom: 15px;
     }
 
 #calculatorGrid {
@@ -163,17 +170,39 @@
       border-radius: 15px;
       margin-right: 4px;
       margin-top: 7px;
+
+    }
+ .toggleButton2 {
+      flex: 1;
+      font-size: 15px;
+      padding: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #3d3d5c;
+      color: #fff;
+      border-radius: 10px;
+      margin: 0px;
+      border-radius: 15px;
+      margin-right: 4px;
+      margin-top: 7px;
+      margin-bottom: 6px;
     }
 
     .toggleButton:hover {
       background-color: #b3b3cc;
       color: #000000;
     }
-
+  .toggleButton2:hover {
+      background-color: #b3b3cc;
+      color: #000000;
+    }
   </style>
 </head>
 <body>
   <div id="calculator">
+    <div id="centeredText">
+     Advertisement Rate Calculator
+    </div>
     <div id="mainDisplay"></div>
     <div id="display2"></div>
     <div id="display3"></div>
@@ -205,8 +234,8 @@
       <button class="toggleButton" onclick="toggleDisplay(3)">Direct 10% + GST </button>
     </div>
     <div id="toggleButtonsRow2">
-      <button class="toggleButton" onclick="toggleDisplay(4)">Direct 15% + GST</button>
-      <button class="toggleButton" onclick="toggleDisplay(5)"> Agents / PTC </button>
+      <button class="toggleButton2" onclick="toggleDisplay(4)">Direct 15% + GST</button>
+      <button class="toggleButton2" onclick="toggleDisplay(5)"> Agents / PTC </button>
     </div>
   </div>
 <div id="creditLine">
