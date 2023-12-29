@@ -36,6 +36,12 @@
       transform: translateX(-50%);
       font-size: 14px;
       color: #888;
+      }
+
+    #centeredText {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 2px;
     }
 
 
@@ -59,6 +65,7 @@
       color: #fff;
       height: 30px;
       margin-bottom: 5px;
+      margin-bottom: 10px;
       border-radius: 10px;
     }
 
@@ -164,7 +171,21 @@
       margin-right: 4px;
       margin-top: 7px;
     }
-
+    .toggleButton2 {
+      flex: 1;
+      font-size: 17px;
+      padding: 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #3d3d5c;
+      color: #3d3d5c;
+      border-radius: 10px;
+      margin: 0px;
+      border-radius: 15px;
+      margin-right: 4px;
+      margin-top: 7px;
+      margin-bottom: 7px;
+    }
     .toggleButton:hover {
       background-color: #b3b3cc;
       color: #000000;
@@ -174,6 +195,9 @@
 </head>
 <body>
   <div id="calculator">
+    <div id="centeredText">
+       Advertisement Rate Calculator
+    </div>
     <div id="mainDisplay"></div>
     <div id="display2"></div>
     <div id="display3"></div>
@@ -205,8 +229,8 @@
       <button class="toggleButton" onclick="toggleDisplay(3)">Direct 10% + GST </button>
     </div>
     <div id="toggleButtonsRow2">
-      <button class="toggleButton" onclick="toggleDisplay(4)">Direct 15% + GST</button>
-      <button class="toggleButton" onclick="toggleDisplay(5)"> Agents / PTC </button>
+      <button class="toggleButton2" onclick="toggleDisplay(4)">Direct 15% + GST</button>
+      <button class="toggleButton2" onclick="toggleDisplay(5)"> Agents / PTC </button>
     </div>
   </div>
 <div id="creditLine">&copy;sdevanklm@gmail.com
