@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triangle Area Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        width: 6cm;
+        height: 14cm;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    form {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Triangle Area Calculator</h1>
+    <form id="triangleForm">
+        <input type="number" id="sideA" placeholder="Side A (in units)">
+        <input type="number" id="sideB" placeholder="Side B (in units)">
+        <input type="number" id="sideC" placeholder="Side C (in units)">
+        <input type="submit" value="Calculate Area">
+    </form>
+    <div id="result"></div>
+</div>
+<script>
+    document.getElementById('triangleForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var sideA = parseFloat(document.getElementById('sideA').value);
+        var sideB = parseFloat(document.getElementById('sideB').value);
+        var sideC = parseFloat(document.getElementById('sideC').value);
+        
+        if (!isNaN(sideA) && !isNaN(sideB) && !isNaN(sideC)) {
+            // Heron's formula to calculate the area of the triangle
+            var s = (sideA + sideB + sideC) / 2;
+            var area = Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+            document.getElementById('result').innerText = 'Area: ' + area.toFixed(2) + ' square units';
+        } else {
+            document.getElementById('result').innerText = 'Please enter valid numbers';
+        }
+    });
+</script>
+</body>
+</html>
