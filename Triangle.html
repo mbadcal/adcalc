@@ -12,12 +12,12 @@
         background-color: #f4f4f4;
     }
     .container {
-        width: 6cm;
-        height: 14cm;
+        width: 8cm;
+        height: 18cm;
         margin: auto;
         background-color: #fff;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         padding: 20px;
     }
     h1 {
@@ -30,8 +30,9 @@
     }
     input[type="number"] {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
+        padding: 14px;
+        font-size: 25px;
+        margin-bottom: 15px;
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -44,14 +45,15 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        margin-TOP: 20px;
     }
     input[type="submit"]:hover {
         background-color: #0056b3;
     }
     #result {
-        margin-top: 20px;
+        margin-top: 30px;
         text-align: center;
-        font-size: 18px;
+        font-size: 20px;
         color: #333;
     }
 </style>
@@ -60,9 +62,9 @@
 <div class="container">
     <h1>Triangle Area Calculator</h1>
     <form id="triangleForm">
-        <input type="number" id="sideA" placeholder="Side A (in units)">
-        <input type="number" id="sideB" placeholder="Side B (in units)">
-        <input type="number" id="sideC" placeholder="Side C (in units)">
+        <input type="number" id="sideA" placeholder="Side A (in m)">
+        <input type="number" id="sideB" placeholder="Side B (in m)">
+        <input type="number" id="sideC" placeholder="Side C (in m)">
         <input type="submit" value="Calculate Area">
     </form>
     <div id="result"></div>
@@ -79,7 +81,7 @@
             // Heron's formula to calculate the area of the triangle
             var s = (sideA + sideB + sideC) / 2;
             var area = Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
-            document.getElementById('result').innerText = 'Area: ' + area.toFixed(2) + ' square units';
+            document.getElementById('result').innerText = 'Area: ' + area.toFixed(2) + ' square meter';
         } else {
             document.getElementById('result').innerText = 'Please enter valid numbers';
         }
